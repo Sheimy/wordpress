@@ -1,0 +1,21 @@
+in functions.php file of the active them
+add the following
+/**
+ * For logged in users, set our static page to act as home page
+ *
+ * @param $value
+ *
+ * @return int
+ */
+function buddydev_set_context_based_page_on_front( $value ) {
+
+	if( ! is_user_logged_in() ) {
+		return $value;
+	}
+
+	//for logged in user, use page id 9
+	return 47;//change with your own page id.
+}
+add_filter( 'pre_option_page_on_front', 'buddydev_set_context_based_page_on_front' );
+
+where 47 is the page id you can get it from url when you edit this page from admin side
